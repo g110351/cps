@@ -1,0 +1,136 @@
+/* Global Styles */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+h1 {
+	text-align: center;
+	margin-top: 0;
+}
+
+/* CPS Display Styles */
+.cps-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.cps-display {
+	flex-basis: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.cps-display button {
+	font-size: 3rem;
+	padding: 20px 40px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.cps-display button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+/* CPS Timer Styles */
+.cps-timer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cps-timer label {
+	font-size: 1.2rem;
+	margin-right: 10px;
+}
+
+.cps-timer select {
+	font-size: 1.2rem;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.timer-display {
+	font-size: 3rem;
+	margin: 20px 0;
+}
+
+.timer-display span {
+	padding: 0 10px;
+}
+
+.cps-timer button {
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* History Styles */
+.cps-history {
+	margin-top: 20px;
+}
+
+.cps-history h2 {
+	margin-top: 0;
+}
+
+.history-display {
+	margin-bottom: 20px;
+}
+
+.history-display p {
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+
+.history-display span {
+	font-weight: bold;
+}
+
+.history-display ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.history-display li {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.clear-history-btn {
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	background-color: #f44336;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.clear-history-btn:hover {
+	background-color: #d32f2f;
+}
