@@ -134,3 +134,22 @@ h1 {
 .clear-history-btn:hover {
 	background-color: #d32f2f;
 }
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 5px;
+	display: block;
+	margin: 0 auto;
+	width: 150px;
+  }
+  
+  .button i {
+	margin-right: 10px;
+  }
