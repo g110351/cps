@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code工具</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        .tool-container {
+            margin: 20px;
+        }
+
+        .qr-code-table {
+            border-collapse: collapse;
+        }
+
+        .qr-module {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: none;
+        }
+
+        .qr-module.black {
+            background-color: black;
+        }
+
+        .qr-module.white {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <p>(半成品)還有一些編碼問題但是我很累,不幹了,所以還有億點點bug,還請見諒</p>
+    <!-- <p>動機: <a href="https://youtube.com/shorts/jsFGoiqAkSQ?feature=share3>">影片</a></p> -->
+    <h1>QR Code 加密&解密工具</h1>
+
+    <div class="tool-container">
+        <h2>[加密區]文字 -> QR Code(二進位數版)</h2>
+        <label for="textInput">輸入文字:</label>
+        <input type="text" id="textInput" placeholder="例: example.com">
+        <button onclick="generateTextToQRCode()">生成QR Code&二進位數版</button>
+
+        <div id="qrcodeContainer" style="margin: 20px auto; width: 300px; height: 300px;"></div>
+
+        <div id="outputInfo"></div>
+
+        <textarea id="binaryOutput" rows="6" cols="21" placeholder="二進位數代碼..."></textarea>
+
+        <script>
+            function generateTextToQRCode() {
+                const textInput = document.getElementById("textInput").value.trim();
+
+                if (!textInput) {
+                    alert("Please enter text to generate a QR code.");
+                    return;
+                }
+
+                // Clear the previous QR code container, if any
+                const qrcodeContainer = document.getElementById("qrcodeContainer");
+                qrcodeContainer.innerHTML = "";
+
+                // Generate the new QR code
+                const qr = new QRCode(qrcodeContainer, {
+                    text: textInput,
+                    width: 300,
+                    height: 300,
+                });
+
+                // Convert the QR code to binary data
+                const binaryData = qrToBinary(qr);
+                document.getElementById("binaryOutput").value = binaryData;
+
+                // Set the number of columns (cols) dynamically based on the square root of the binary data's length
+                const binaryDataLength = binaryData.length;
+                const sqrtBinaryDataLength = Math.ceil(Math.sqrt(binaryDataLength));
+                document.getElementById("binaryOutput").setAttribute("cols", sqrtBinaryDataLength.toString());
+
+                // Display the QR code size
+                const qrCodeSize = qr.getModuleCount();
+                document.getElementById("outputInfo").textContent = `${qrCodeSize}x${qrCodeSize}`;
+            }
+
+            function qrToBinary(qr) {
+                const qrModules = qr._oQRCode.modules;
+                let binaryData = "";
+
+                for (let row = 0; row < qrModules.length; row++) {
+                    for (let col = 0; col < qrModules[row].length; col++) {
+                        binaryData += qrModules[row][col] ? '1' : '0';
+                    }
+                }
+
+                return binaryData;
+            }
+        </script>
+    </div>
+
+    <div class="tool-container">
+        <h2>[解密區]二進位數代碼 -> QR Code</h2>
+        <label for="binaryInput">輸入二進位數代碼:</label>
+        <input type="text" id="binaryInput" placeholder="例: 1111...0100">
+        <button onclick="generateBinaryToQRCode()">生成 QR Code</button>
+        
+        <div id="qrCodeContainer"></div>
+
+        <script>
+            function generateBinaryToQRCode() {
+                const binaryData = document.getElementById("binaryInput").value.trim();
+                const binaryRegex = /^[01]+$/;
+
+                if (!binaryData.match(binaryRegex)) {
+                    alert("輸入無效！請輸入有效的二進位數。");
+                    return;
+                }
+
+                // Calculate the QR code size (a perfect square number) based on the binary data length
+                const qrCodeSize = Math.ceil(Math.sqrt(binaryData.length));
+
+                // Pad the binary data with leading zeros to make it a multiple of the QR code size
+                const paddedBinaryData = binaryData.padEnd(qrCodeSize * qrCodeSize, '0');
+
+                // Clear the previous QR code, if any
+                const qrCodeContainer = document.getElementById("qrCodeContainer");
+                qrCodeContainer.innerHTML = "";
+
+                // Generate the QR code as a table
+                const table = document.createElement("table");
+                table.classList.add("qr-code-table");
+                qrCodeContainer.appendChild(table);
+
+                for (let i = 0; i < qrCodeSize; i++) {
+                    const row = document.createElement("tr");
+
+                    for (let j = 0; j < qrCodeSize; j++) {
+                        const index = i * qrCodeSize + j;
+                        const moduleValue = paddedBinaryData[index];
+
+                        const qrModule = document.createElement("td");
+                        qrModule.classList.add("qr-module", moduleValue === '1' ? "black" : "white");
+                        row.appendChild(qrModule);
+                    }
+
+                    table.appendChild(row);
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
