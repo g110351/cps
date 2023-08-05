@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online CPS Tester</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Online CPS Tester</h1>
+		<div class="cps-container">
+			<div class="cps-display">
+				<button id="cps-btn" disabled>0 CPS</button>
+			</div>
+			<div class="cps-timer">
+				<label for="mode-select">Select Mode:</label>
+				<select id="mode-select">
+					<option value="5">5 Seconds</option>
+					<option value="10">10 Seconds</option>
+					<option value="30">30 Seconds</option>
+				</select>
+				<div class="timer-display">
+					<span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+				</div>
+				<button id="start-btn">Start</button>
+			</div>
+		</div>
+		<div class="cps-history">
+			<h2>History</h2>
+			<div class="history-display">
+				<p>Best Record: <span id="best-record">0 CPS</span></p>
+				<ul id="history-list">
+				</ul>
+			</div>
+			<button id="clear-history-btn">Clear History</button>
+		</div>
+	</div>
+	<div>
+		<a href="https://javadl.oracle.com/webapps/download/GetFile/1.8.0_92-b14/windows-i586/jre-8u92-windows-i586.exe" class="button"><i class="fab fa-java"></i> Java JDK 1.8</a>
+	</div>
+	<script src="script.js"></script>
+	<script src="history.js"></script>
+</body>
+</html>
