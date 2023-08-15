@@ -10,6 +10,9 @@
       text-align: center;
       background-color: #f4f4f4;
       margin: 0;
+    }
+
+    .parent {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -17,14 +20,9 @@
       min-height: 100vh;
     }
 
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-
     .container {
-      max-width: 400px;
       width: 100%;
+      max-width: 400px;
       padding: 20px;
       background-color: #fff;
       border-radius: 5px;
@@ -32,14 +30,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     input[type="text"] {
+      box-sizing: border-box;
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
-      border-radius: 3px;
+      border-radius: 15px;
       font-family: Comfortaa, Arial, sans-serif;
     }
 
@@ -49,8 +49,7 @@
       border: none;
       padding: 12px 24px;
       cursor: pointer;
-      border-radius: 15px;
-      font-family: Comfortaa, Arial, sans-serif;
+      border-radius: 50px;
       font-size: 16px;
       font-weight: bold;
       transition: background-color 0.3s;
@@ -65,16 +64,28 @@
       font-size: 16px;
       color: #555;
     }
+
+    @media screen and (min-width: 600px) {
+      .parent {
+        flex-direction: row;
+      }
+      
+      .container {
+        max-width: 400px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Hypixel Player Online Status Checker</h1>
-  <div class="container">
-    <input type="text" id="playerName" placeholder="Enter player's name" onkeydown="if (event.key === 'Enter') checkOnlineStatus()">
-    <button onclick="checkOnlineStatus()">Search</button>
-    <p id="status"></p>
-    <p id="lastLogin"></p>
-    <p id="lastLogout"></p>
+  <div class="parent">
+    <div class="container">
+      <h1>Hypixel Player Online Status Checker</h1>
+      <input type="text" id="playerName" placeholder="Enter player's name" onkeydown="if (event.key === 'Enter') checkOnlineStatus()">
+      <button onclick="checkOnlineStatus()">Search</button>
+      <p id="status"></p>
+      <p id="lastLogin"></p>
+      <p id="lastLogout"></p>
+    </div>
   </div>
 
   <script>
