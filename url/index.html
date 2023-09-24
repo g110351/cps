@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Animation</title>
+</head>
+<body>
+    <script>
+        var f = ['🌑', '🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒'];
+        var d = [0, 0, 0, 0, 0, 0, 0, 0];
+        var m = 0;
+
+        function loop() {
+            var s = '';
+            var x = 0;
+
+            if (!m) {
+                while (d[x] == 4) {
+                    x++;
+                }
+                if (x >= d.length) m = 1;
+                else {
+                    d[x]++;
+                }
+            } else {
+                while (d[x] == 0) {
+                    x++;
+                }
+                if (x >= d.length) m = 0;
+                else {
+                    d[x]++;
+                    if (d[x] == 8) d[x] = 0;
+                }
+            }
+
+            d.forEach(function (n) {
+                s += f[n];
+            });
+
+            var url = '#' + s;
+
+            // Use history.replaceState to change the URL without creating a new entry in the browser's history
+            history.replaceState(null, null, url);
+
+            setTimeout(loop, 50);
+        }
+
+        loop();
+    </script>
+</body>
+</html>
