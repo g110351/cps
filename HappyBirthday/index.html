@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your HTML File</title>
+    <title>Celebration Page</title>
     <style>
         /* Add your CSS styles here */
         body {
@@ -12,15 +13,25 @@
         }
 
         .wrap {
-            max-width: 800px;
-            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
         }
 
         .gift, .cake {
             border: 1px solid #ccc;
             padding: 20px;
-            margin: 20px 0;
+            border-radius: 10px;
         }
+
+        .giftcard {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Add more styles as needed */
     </style>
 </head>
 
@@ -28,7 +39,7 @@
     <section class="wrap">
         <section class="gift">
             <div class="giftcard">iTunes
-                <br />Gift Card</div>
+                <br/>Gift Card</div>
             <section class="gift_top">
                 <div class="ribbon_right"></div>
                 <div class="ribbon_left"></div>
@@ -54,11 +65,25 @@
             <section class="cake_top2">
                 <section class="cake_top1_creams">
                     <div class="cake_top1_cream1"></div>
-                    <!-- ... other elements ... -->
-                    <div class="cake_top1_cream13"></div>
+                    <!-- ... (rest of your content) ... -->
                 </section>
             </section>
-            <!-- ... other elements ... -->
+            <section class="cake_top1">
+                <div class="cherry" id="cherry1"></div>
+                <!-- ... (rest of your content) ... -->
+            </section>
+            <section class="cake_bottom3">
+                <section class="cake_bottom3_creams">
+                    <div class="cake_bottom3_cream1"></div>
+                    <!-- ... (rest of your content) ... -->
+                </section>
+            </section>
+            <section class="cake_bottom2">
+                <section class="cake_bottom1_creams">
+                    <div class="cake_bottom1_cream1"></div>
+                    <!-- ... (rest of your content) ... -->
+                </section>
+            </section>
             <div class="cake_bottom">
             </div>
         </section>
