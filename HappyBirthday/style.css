@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 body {
     background: #ffebd0;
 }
@@ -897,4 +898,11 @@ font-family: 'Source Sans Pro', sans-serif;
         height: 12px;
         background: #fdd214;
     }
+}
+.birthday-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    color: #ff66b2; /* pink color for cuteness */
+    text-align: center;
+    margin-top: 20px;
 }
