@@ -133,5 +133,47 @@
     </section>
 <!-- partial -->
   
+
+    <script>
+        var emojis = ['🎂', '🎈', '🎁', '🎉'];
+        var states = new Array(emojis.length).fill(0);
+        var maxState = emojis.length - 1;
+        var direction = 1;
+
+        function loop() {
+            var animation = '';
+            
+            states.forEach(function (state, index) {
+                animation += emojis[state];
+            });
+
+            var url = '#' + animation;
+            history.replaceState(null, null, url);
+
+            if (direction === 1) {
+                if (states.every(state => state === maxState)) {
+                    direction = -1;
+                }
+            } else {
+                if (states.every(state => state === 0)) {
+                    direction = 1;
+                }
+            }
+
+            states = states.map(function (state) {
+                var newState = state + direction;
+                if (newState > maxState) {
+                    newState = maxState;
+                } else if (newState < 0) {
+                    newState = 0;
+                }
+                return newState;
+            });
+
+            setTimeout(loop, 150);
+        }
+
+        loop();
+    </script>
 </body>
 </html>
