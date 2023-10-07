@@ -901,8 +901,8 @@ font-family: 'Source Sans Pro', sans-serif;
 }
 .birthday-text {
     font-family: 'Pacifico', cursive;
-    font-size: 48px;
-    color: #ff66b2; /* pink color for cuteness */
+    font-size: 52.0px;
+    color: #64c8e9fc; /* color for cuteness */
     text-align: center;
     margin-top: 20px;
 }
