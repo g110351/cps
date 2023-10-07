@@ -906,3 +906,11 @@ font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
     margin-top: 20px;
 }
+
+.mvp {
+    color: aqua;
+}
+
+.plus {
+    color: red;
+}
