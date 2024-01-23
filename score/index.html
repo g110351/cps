@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/g110351/cps/main/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/g110351/cps/main/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/g110351/cps/main/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://raw.githubusercontent.com/g110351/cps/main/favicon/site.webmanifest">
+</head>
+<body>
+
+<h1>成績轉換腳本</h1>
+
+<form id="scoreForm">
+    <label for="grades">輸入成績:</label>
+    <textarea id="grades" name="grades" rows="4" cols="50"></textarea><br>
+
+    <button type="button" onclick="convertAndGenerateScript()">生成腳本</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+function convertAndGenerateScript() {
+    var grades = document.getElementById('grades').value;
+
+    // 替換 "100" 為 "*"
+    var result = grades.replace(/100/g, '*');
+
+    // 刪除非數字和非星號字符
+    result = result.replace(/[^\d*]/g, '');
+
+    document.getElementById('result').innerText = result;
+
+    // Generate AutoHotKey Script
+    const scriptContent = `#Persistent\nSetKeyDelay, 200\n^!t::\n  Send, ${result}\nReturn`;
+
+    const blob = new Blob([scriptContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'ScoreScript.ahk';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>
